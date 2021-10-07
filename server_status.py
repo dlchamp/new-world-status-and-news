@@ -78,9 +78,11 @@ for index, region in regions_dict.items():
         elif server.find_all("div", {"class": "ags-ServerStatus-content-responses-response-server-status ags-ServerStatus-content-responses-response-server-status--down"}):
             server_status = "❌"
         elif server.find_all("div", {"class": "ags-ServerStatus-content-responses-response-server-status ags-ServerStatus-content-responses-response-server-status--full"}):
-            server_status = "🚫"
-        else:
             server_status = "⚠️"
+        elif server.find_all("div", {"class": "ags-ServerStatus-content-responses-response-server-status ags-ServerStatus-content-responses-response-server-status--maintenance"}):
+            server_status = "🔧"
+        else:
+            server_status = "⛔"
 
         log.info(server_status + " - " + region +
                  ", " + server_name.text.strip())

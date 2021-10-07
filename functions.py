@@ -30,22 +30,25 @@ def switch(old_status, new_status, webhook_url, region, server, url):
         elif old_status == "null":
             discord_webhook(webhook_url, region, server, new_status, url,
                             "The following server has appeared on the status page.")
-        elif old_status == "🚫":
+        elif old_status == "⚠️":
             discord_webhook(webhook_url, region, server, new_status, url,
                             "The following server is no longer full.")
     elif new_status == "❌":
         if old_status != "null":
             discord_webhook(webhook_url, region, server, new_status,
-                            url, "The following server is now offline.")
+                            url, "The following server is now offline. Alerts will be sent when it has come back online.")
         elif old_status == "null":
             discord_webhook(webhook_url, region, server, new_status, url,
                             "The following server has appeared on the status page.")
     elif new_status == "null":
-        discord_webhook(webhook_url, region, server, "⚠️", url,
+        discord_webhook(webhook_url, region, server, "⛔", url,
                         "The following server has disappeared from status page.")
-    elif new_status == "🚫":
-        discord_webhook(webhook_url, region, server, "🚫", url,
+    elif new_status == "⚠️":
+        discord_webhook(webhook_url, region, server, "⚠️", url,
                         "The following server is full and could be experiencing a login queue.")
+    elif new_status == "🔧":
+        discord_webhook(webhook_url, region, server, "🔧", url,
+                        "The following server is currently down for maintenance. Alerts will be sent when it has come back online.")
 
 
 def deep_diff(x, y, parent_key=None, exclude_keys=[], epsilon_keys=[]):
