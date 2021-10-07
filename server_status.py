@@ -14,7 +14,7 @@ scrape_url = "https://www.newworld.com/en-us/support/server-status"
 # Your discord webhook URL - https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks
 webhook_url = "https://discord.com/api/webhooks/895349377143570453/LvY7zcI0CnfxnksfEAEBirGof9r4cYCheOd_FPs43s9OZX-rniGYrPy49XUIM8qGWANe"
 
-filter_regions = True  # Set to True to only post updates about certain regions
+filter_regions = False  # Set to True to only post updates about certain regions
 monitored_regions = ["US East"]  # List of regions to update
 
 filter_servers = True  # Set to True to only post updates about certain servers
@@ -77,6 +77,8 @@ for index, region in regions_dict.items():
             server_status = "✅"
         elif server.find_all("div", {"class": "ags-ServerStatus-content-responses-response-server-status ags-ServerStatus-content-responses-response-server-status--down"}):
             server_status = "❌"
+        elif server.find_all("div", {"class": "ags-ServerStatus-content-responses-response-server-status ags-ServerStatus-content-responses-response-server-status--full"}):
+            server_status = "🚫"
         else:
             server_status = "⚠️"
 
