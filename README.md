@@ -31,7 +31,7 @@ server to the Discord webhook URL.
 
 ### Configure the script
 
-* Open main.py in you favorite text editor.
+* Open main.py in your favorite text editor.
 * Get your Discord webhook URL ([Webhook setup help and info](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks))
 * Input the server's you wish to monitor in the `monitored_servers` list
 * Input a role that you'd like to mention when new updates are sent to a channel - use `None` if you do not wish to setup a mention role.  (*ex: mention_role = '<@78986543516879564'* or *mention_role = None*)
