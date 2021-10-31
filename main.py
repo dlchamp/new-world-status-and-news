@@ -1,16 +1,15 @@
 from functions import ServerStatus as func
 
 
-
-
 '''
 ###CONFIG###
 Get your webhook link by editing the channel you wish to send webhooks, click on "Integrations" > "Webhooks"
 Click "New Webhook" > Give the webhook a name, and icon, then save.  Copy URL
 '''
 url = 'https://www.newworld.com/en-us/support/server-status' # Should never need to change
-webhook_url = 'full-discord-webhook-url' # Paste your discord channel webhook URL here
+webhook_url = 'discord-webhook-channel-url' # Paste your discord channel webhook URL here
 monitored_servers = ['Valgrind','Emain Albach','Savoya'] # Add or remove which ever servers you wish to monitor
+mention_role = 'mention_role_ID' # Get role ID by putting @role, then putting a \ before to get full role mention ID
 
 
 '''
@@ -34,23 +33,23 @@ if bool(old_status_dict):
         if diff_statuts == '✅':
             if old_status_dict[server] == '❌':
                 message = 'The following server is now online!'
-                func.webhook_embed(webhook_url,server,diff_status, message)
+                func.webhook_embed(webhook_url,server,diff_status, message,mention_role)
             elif old_status_dict[server] == '🛠️':
                 message = 'The following server has completed maintenance and has come back online!'
-                func.webhook_embed(webhook_url,server,diff_status, message)
+                func.webhook_embed(webhook_url,server,diff_status, message,mention_role)
             elif old_status_dict[server] == '⚠️':
                 message = 'The following server is no longer full and should have reduce or no wait time to log in!'
-                func.webhook_embed(webhook_url,server,diff_status, message)
+                func.webhook_embed(webhook_url,server,diff_status, message,mention_role)
 
         elif diff_statuts == '⚠️':
             message = 'The following server is now full!  Login queues should be expected.'
-            func.webhook_embed(webhook_url,server,diff_status, message)
+            func.webhook_embed(webhook_url,server,diff_status, message,mention_role)
         elif diff_statuts == '❌':
             message = 'The following server is now offline!'
-            func.webhook_embed(webhook_url,server,diff_status, message)
+            func.webhook_embed(webhook_url,server,diff_status, message,mention_role)
         elif diff_statuts == '🛠️':
             message = 'The following server is undergoing maintenance. A new status message will be sent when it becomes available!'
-            func.webhook_embed(webhook_url,server,diff_status, message)
+            func.webhook_embed(webhook_url,server,diff_status, message,mention_role)
         func.update_json_status(diff_dict)
 
 else:
@@ -58,16 +57,16 @@ else:
     for server,status in new_status_dict.items():
         if status == '✅':
             message = 'The following server is online!'
-            func.webhook_embed(webhook_url, server, status, message)
+            func.webhook_embed(webhook_url,server,status, message,mention_role)
         elif status == '❌':
             message = 'The following server is offline!'
-            func.webhook_embed(webhook_url, server, status, message)
+            func.webhook_embed(webhook_url,server,status, message,mention_role)
         elif status == '⚠️':
             message = 'The following server is currently full! Loging qeueus should be expected.'
-            func.webhook_embed(webhook_url, server, status, message)
+            func.webhook_embed(webhook_url,server,status, message,mention_role)
         elif status == '🛠️':
             message = ' The following server is undergoing maintenance! A new message status will be sent once it\'s back online.'
-            func.webhook_embed(webhook_url, server, status, message)
+            func.webhook_embed(webhook_url,server,status, message,mention_role)
 
 
 
