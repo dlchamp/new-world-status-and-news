@@ -1,3 +1,4 @@
+import os
 import json
 import requests
 from bs4 import BeautifulSoup
@@ -7,6 +8,7 @@ from discord_webhook import DiscordWebhook, DiscordEmbed
 class ServerStatus:
     def __init__(self):
         super().__init__()
+        self.cwd = os.getcwd()
 
 
     def webhook_embed(webhook_url,server,status,message,role):
@@ -24,7 +26,6 @@ class ServerStatus:
             embed = DiscordEmbed(title='Server Status', description=f'{role}\n**{message}**', color=status_color)
         embed.add_embed_field(name='Server', value=server)
         embed.add_embed_field(name='Status', value = status)
-        embed.set_thumbnail(url='https://www.d3hell.com/wp-content/uploads/2020/08/unnamed-300x300.jpg')
         webhook.add_embed(embed)
         response = webhook.execute()
 
@@ -38,12 +39,14 @@ class ServerStatus:
 
 
     def get_old_status():
-        with open('./status.json') as x:
+        cwd = os.getcwd()
+        with open(f'{cwd}/status.json') as x:
             old_status = json.load(x)
         return old_status
 
     def update_json_status(new_status):
-        with open('./status.json','w+') as f:
+        cwd = os.getcwd()
+        with open(f'{cwd}/status.json','w+') as f:
             json.dump(new_status, f, indent=2)
 
 
