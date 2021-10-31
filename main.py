@@ -1,14 +1,15 @@
 from functions import ServerStatus as func
 
 
-url = 'https://www.newworld.com/en-us/support/server-status' # Should never need to change
+
 
 '''
 ###CONFIG###
 Get your webhook link by editing the channel you wish to send webhooks, click on "Integrations" > "Webhooks"
 Click "New Webhook" > Give the webhook a name, and icon, then save.  Copy URL
 '''
-webhook_url = 'https://discord.com/api/webhooks/904276683815792680/AQpkm1j2MsabpttoY_xCTih8zCFYY4kGSL9761Ej3DwIvgu6jnFc4cTKvu1dujmknF6U' # Paste your discord channel webhook URL here
+url = 'https://www.newworld.com/en-us/support/server-status' # Should never need to change
+webhook_url = 'full-discord-webhook-url' # Paste your discord channel webhook URL here
 monitored_servers = ['Valgrind','Emain Albach','Savoya'] # Add or remove which ever servers you wish to monitor
 
 
