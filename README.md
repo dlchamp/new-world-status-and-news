@@ -27,11 +27,24 @@ server to the Discord webhook URL.
 * Navigate to the directory where you unpacked or stored the repo
 * Open command prompt or terminal within that directory
 * Install requirements `pip install -r requirements.txt`
+* Open main.py and configure your monitored severs and Discord webhook URL ([Webhook setup help and info](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks)
 
-### Executing program
+## Set up the schedule
+### Crontab
+(*Using Ubuntu for example config - please check your distro/DE for setting up cron if you don't already know*)
 
-* Run `python main.py` or `python3 main.py` if you have multiple version of Python installed
+* Figure out your cron schedule (ex: *every 5 mintues* [*/5 * * * *](https://crontab.guru/#*/5_*_*_*_*)
+* Open terminal - run `crontab -e` - mine opens in Nano 
+* Add your schedule - `*/5 * * * * python3 /home/user/path/to/script/directory`
+* `ctrl + X` to close, `Y` to save to buffer, `Return/Enter` to confirm save and close
+* Now your python script will run automatically every 5 minutes.
 
+### Windows Task Scheduler
+* Start > `Task Schedular` > Enter to open the Task scheduler
+* Create Task > Give it a name and allow it to run whether user is logged on or not (configure for Windows 10)
+* Triggers Tab > **Begin the Task**: At startup, **Repeat Task every**: 5 minutes, **for a duration of**: Indefenitely
+* Actions Tab > **New...**, **Action**: Start a program, **Program/script**: /path/to/python.exe, **Add arguments**: `main.py`, **Start in**: /path/to/script
+* Save - Now the script will 5 minutes
 
 ## Version History
 
