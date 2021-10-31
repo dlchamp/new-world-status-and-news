@@ -33,6 +33,7 @@ if bool(old_status_dict):
     diff_status_dict = func.compare_status(old_status_dict,new_status_dict)
     for server,diff_status in diff_status_dict.items():
         if diff_statuts == '✅':
+            print(f'{server} status has been updated: ✅')
             if old_status_dict[server] == '❌':
                 message = 'The following server is now online!'
                 func.webhook_embed(webhook_url,server,diff_status, message,mention_role)
@@ -44,12 +45,15 @@ if bool(old_status_dict):
                 func.webhook_embed(webhook_url,server,diff_status, message,mention_role)
 
         elif diff_statuts == '⚠️':
+            print(f'{server} status has been updated: ⚠️')
             message = 'The following server is now full!  Login queues should be expected.'
             func.webhook_embed(webhook_url,server,diff_status, message,mention_role)
         elif diff_statuts == '❌':
+            print(f'{server} status has been updated: ❌')
             message = 'The following server is now offline!'
             func.webhook_embed(webhook_url,server,diff_status, message,mention_role)
         elif diff_statuts == '🛠️':
+            print(f'{server} status has been updated: 🛠️')
             message = 'The following server is undergoing maintenance. A new status message will be sent when it becomes available!'
             func.webhook_embed(webhook_url,server,diff_status, message,mention_role)
         func.update_json_status(diff_dict,cwd)
