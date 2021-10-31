@@ -5,11 +5,12 @@ from functions import ServerStatus as func
 ###CONFIG###
 Get your webhook link by editing the channel you wish to send webhooks, click on "Integrations" > "Webhooks"
 Click "New Webhook" > Give the webhook a name, and icon, then save.  Copy URL
+Get Role mention ID - put \ in front of @role before sending mention to channel (\@role)
 '''
 url = 'https://www.newworld.com/en-us/support/server-status' # Should never need to change
-webhook_url = 'discord-webhook-channel-url' # Paste your discord channel webhook URL here
+webhook_url = 'https://discord.com/api/webhooks/904276683815792680/AQpkm1j2MsabpttoY_xCTih8zCFYY4kGSL9761Ej3DwIvgu6jnFc4cTKvu1dujmknF6U' # Paste your discord channel webhook URL here
 monitored_servers = ['Valgrind','Emain Albach','Savoya'] # Add or remove which ever servers you wish to monitor
-mention_role = 'mention_role_ID' # Get role ID by putting @role, then putting a \ before to get full role mention ID
+mention_role = 'mention_role_id' # Paste role ID here, if you do not wish to mention a role, replace 'role_id' with None (ex mention_role = None)
 
 
 '''

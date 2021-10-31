@@ -18,7 +18,10 @@ class ServerStatus:
             status = "ffaa00"
 
         webhook = DiscordWebhook(url=webhook_url, rate_limit_retry=True)
-        embed = DiscordEmbed(title='Server Status', description=f'{role}\n**{message}**', color=status_color)
+        if role is None:
+            embed = DiscordEmbed(title='Server Status', description=f'**{message}**', color=status_color)
+        else:
+            embed = DiscordEmbed(title='Server Status', description=f'{role}\n**{message}**', color=status_color)
         embed.add_embed_field(name='Server', value=server)
         embed.add_embed_field(name='Status', value = status)
         embed.set_thumbnail(url='https://www.d3hell.com/wp-content/uploads/2020/08/unnamed-300x300.jpg')
