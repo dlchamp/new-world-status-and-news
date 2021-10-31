@@ -38,14 +38,12 @@ class ServerStatus:
         return diff_dict
 
 
-    def get_old_status():
-        cwd = os.getcwd()
+    def get_old_status(cwd):
         with open(f'{cwd}/status.json') as x:
             old_status = json.load(x)
         return old_status
 
-    def update_json_status(new_status):
-        cwd = os.getcwd()
+    def update_json_status(new_status,cwd):
         with open(f'{cwd}/status.json','w+') as f:
             json.dump(new_status, f, indent=2)
 

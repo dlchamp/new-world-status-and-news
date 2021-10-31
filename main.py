@@ -1,3 +1,4 @@
+import os
 from functions import ServerStatus as func
 
 
@@ -12,14 +13,14 @@ webhook_url = 'discord-webhook-url' # Paste your discord channel webhook URL her
 monitored_servers = ['Valgrind','Emain Albach','Savoya'] # Add or remove which ever servers you wish to monitor
 mention_role = 'role-mention-id' # Paste role ID here, if you do not wish to mention a role, replace 'role_id' with None (ex mention_role = None)
 
-
+cwd = os.path.abspath(__file__).replace('main.py', '')  # Absolute path to script file - DO NOT EDIT
 '''
 Start server status checks and webhook sending
 old_status = gets exisitng json file, returns empty dict if none exists
 new_status = run web scrape function to get status for servers in monitored_servers
 
 '''
-old_status_dict = func.get_old_status()
+old_status_dict = func.get_old_status(cwd)
 new_status_dict = func.scrape_status_page(url,monitored_servers)
 
 '''
@@ -51,10 +52,10 @@ if bool(old_status_dict):
         elif diff_statuts == '🛠️':
             message = 'The following server is undergoing maintenance. A new status message will be sent when it becomes available!'
             func.webhook_embed(webhook_url,server,diff_status, message,mention_role)
-        func.update_json_status(diff_dict)
+        func.update_json_status(diff_dict,cwd)
 
 else:
-    func.update_json_status(new_status_dict)
+    func.update_json_status(new_status_dict,cwd)
     for server,status in new_status_dict.items():
         if status == '✅':
             message = 'The following server is online!'
