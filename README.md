@@ -27,17 +27,25 @@ server to the Discord webhook URL.
 * Navigate to the directory where you unpacked or stored the repo
 * Open command prompt or terminal within that directory
 * Install requirements `pip install -r requirements.txt`
-* Open main.py and configure your monitored severs and Discord webhook URL ([Webhook setup help and info](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks)
+*
+
+### Configure the script
+
+* Open main.py in you favorite text editor.
+* Get your Discord webhook URL ([Webhook setup help and info](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks))
+* Input the server's you wish to monitor in the `monitored_servers` list
+* Input a role that you'd like to mention when new updates are sent to a channel - use `None` if you do not wish to setup a mention role.  (*ex: mention_role = '<@78986543516879564'* or *mention_role = None*)
 
 ## Set up the schedule
 ### Crontab
 (*Using Ubuntu for example config - please check your distro/DE for setting up cron if you don't already know*)
 
-* Figure out your cron schedule (ex: *every 5 mintues* [*/5 * * * *](https://crontab.guru/#*/5_*_*_*_*)
+* Figure out your cron schedule (ex: *every 5 mintues* [`*/5 * * * *`](https://crontab.guru/#*/5_*_*_*_*))
 * Open terminal - run `crontab -e` - mine opens in Nano 
-* Add your schedule - `*/5 * * * * python3 /home/user/path/to/script/directory`
+* Add your schedule - `*/5 * * * * python3 /home/user/path/to/script/directory/main.py`
 * `ctrl + X` to close, `Y` to save to buffer, `Return/Enter` to confirm save and close
 * Now your python script will run automatically every 5 minutes.
+
 
 ### Windows Task Scheduler
 * Start > `Task Schedular` > Enter to open the Task scheduler
@@ -47,6 +55,10 @@ server to the Discord webhook URL.
 * Save - Now the script will 5 minutes
 
 ## Version History
+
+* 0.2
+    * Added options for mentioning roles
+    * Updated readme to include full instructions for setup of script, crontab, and Windows task scheduler
 
 * 0.1
     * Initial Release
