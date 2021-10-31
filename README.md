@@ -1,4 +1,4 @@
-# new-world-status# New World Server Status (Discord Webhook)
+# New World Server Status (Discord Webhook)
 
 A simple script that scrapes the server status from `https://www.newworld.com/en-us/support/server-status` and reports status changes via Discord webhook.
 
