@@ -24,7 +24,7 @@ mention_role = 'role-mention-id'
 
 status_url = 'https://www.newworld.com/en-us/support/server-status' # Should never need to change
 news_url = 'https://www.newworld.com/en-us/news'  # Should never need to change.
-cwd = os.path.abspath(__file__).replace('main.py', '')  # Absolute path to script file - DO NOT EDIT
+cwd =  os.getcwd() # Absolute path to working dir - DO NOT EDIT
 
 '''
 Get old server status and compare with new status, update changes and send messages to discord webhook url

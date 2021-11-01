@@ -39,12 +39,12 @@ class ServerStatus:
 
 
     def get_old_status(cwd):
-        with open(f'{cwd}status.json') as x:
+        with open(f'{cwd}/db/status.json') as x:
             old_status = json.load(x)
         return old_status
 
     def update_json_status(new_status,cwd):
-        with open(f'{cwd}status.json','w+') as f:
+        with open(f'{cwd}/db/status.json','w+') as f:
             json.dump(new_status, f, indent=2)
 
 
@@ -107,12 +107,12 @@ class GameNews:
 
 
     def get_old_articles(cwd):
-        with open(f'{cwd}articles.json') as x:
+        with open(f'{cwd}/db/articles.json') as x:
             old_articles = json.load(x)
         return old_articles
 
     def update_articles(send_articles_dict,cwd):
-        with open(f'{cwd}articles.json', 'w+') as f:
+        with open(f'{cwd}/db/articles.json', 'w+') as f:
             json.dump(send_articles_dict,f,indent=2, ensure_ascii=False)
 
 
