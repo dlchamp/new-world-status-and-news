@@ -9,7 +9,7 @@ Paste your discord webhook channel URLs into the two variables below
 If you wish for there to only be one channel for both server status and game news (patch notes),
 make leave news_webhook_url = server_status_webhook_url
 '''
-server_status_webhook_url = 'discord-webhook-url'
+server_status_webhook_url = 'discord-channel-webhook-url'
 news_webhook_url = server_status_webhook_url # Add second webhook url if you wish to send news messages to a different channel
 '''
 Set your list of 1 or more servers you wish to monitor
@@ -66,16 +66,16 @@ else:
     for server,status in new_status_dict.items():
         if status == '✅':
             message = 'The following server is online!'
-            status_func.webhook_embed(webhook_url,server,status, message,mention_role)
+            status_func.webhook_embed(server_status_webhook_url,server,status, message,mention_role)
         elif status == '❌':
             message = 'The following server is offline!'
-            status_func.webhook_embed(webhook_url,server,status, message,mention_role)
+            status_func.webhook_embed(server_status_webhook_url,server,status, message,mention_role)
         elif status == '⚠️':
             message = 'The following server is currently full! Loging qeueus should be expected.'
-            status_func.webhook_embed(webhook_url,server,status, message,mention_role)
+            status_func.webhook_embed(server_status_webhook_url,server,status, message,mention_role)
         elif status == '🛠️':
             message = ' The following server is undergoing maintenance! A new message status will be sent once it\'s back online.'
-            status_func.webhook_embed(webhook_url,server,status, message,mention_role)
+            status_func.webhook_embed(server_status_webhook_url,server,status, message,mention_role)
 
 
 '''
