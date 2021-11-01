@@ -12,9 +12,9 @@ Once this data has been retrieved, it will compare it against existing last know
 newest status for each server into JSON and send an initial status message to the Discord webhook URL configured.  If existing status are found, and the status has been updated, it will send a new status message for each changed 
 server to the Discord webhook URL.
 
-![Server Status Example](/sample_images/server_status_example.jpg)
+![Server Status Example](https://raw.githubusercontent.com/dlchamp/new-world-status/main/sample_images/server_status_example.jpg)
 
-![Game Updates Example](/sample_images/game_updates_news_example.jpg)
+![Game Updates Example](https://raw.githubusercontent.com/dlchamp/new-world-status/main/sample_images/game_updates_news_example.JPG)
 
 ## Getting Started
 
