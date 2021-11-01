@@ -33,6 +33,7 @@ server to the Discord webhook URL.
 
 * Open main.py in your favorite text editor.
 * Get your Discord webhook URL ([Webhook setup help and info](https://support.discord.com/hc/en-us/articles/228383668-Intro-to-Webhooks))
+* Add second URL if you wish to have updates/patch notes sent to a different channel, if not, leave `news_webhook_url` as is.
 * Input the server's you wish to monitor in the `monitored_servers` list
 * Input a role that you'd like to mention when new updates are sent to a channel - use `None` if you do not wish to setup a mention role.  (*ex: mention_role = '<@78986543516879564'* or *mention_role = None*)
 
@@ -56,6 +57,9 @@ server to the Discord webhook URL.
 
 ## Version History
 
+* 0.3
+    * Added new functions for scraping and posting game updates/patch notes
+    * Added vairable for second webhook url if user wishes to send updates/patch notes to a different channel than server status messages
 * 0.2
     * Added options for mentioning roles
     * Updated readme to include full instructions for setup of script, crontab, and Windows task scheduler
