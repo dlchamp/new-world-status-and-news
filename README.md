@@ -52,7 +52,7 @@ server to the Discord webhook URL.
 
 
 ### Windows Task Scheduler
-* Start > `Task Schedular` > Enter to open the Task scheduler
+* Start > `Task Scheduler` > Enter to open the Task scheduler
 * Create Task > Give it a name and allow it to run whether user is logged on or not (configure for Windows 10)
 * Triggers Tab > **Begin the Task**: At startup, **Repeat Task every**: 5 minutes, **for a duration of**: Indefenitely
 * Actions Tab > **New...**, **Action**: Start a program, **Program/script**: /path/to/python.exe, **Add arguments**: `main.py`, **Start in**: /path/to/script
