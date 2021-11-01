@@ -96,9 +96,11 @@ if bool(old_articles_dict):
                             'url':new_articles_dict[article]['url'],
                             'img':new_articles_dict[article]['img']
                             }
+        print('New article(s) found -- Sending to Discord...')
     news_func.articles_webhook(news_webhook_url,send_articles_dict,mention_role)
     news_func.update_articles(new_articles_dict,cwd)
 else:
+    print('New article(s) found -- Updating articles.json...')
     news_func.update_articles(new_articles_dict,cwd)
 
 
