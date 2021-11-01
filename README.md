@@ -7,7 +7,7 @@ A simple script that scrapes the server status from `https://www.newworld.com/en
 The script should be setup to run on a schedule, I run it every 5 minutes via a cron job, but it can be setup to run as often as you'd like in whichever scheduling method
 is most convenient for you.
 
-The script looks at the `monitored_servers` list in `main.py` and scrapes the server name and status for each server name in that list from `https://www.newworld.com/en-us/support/server-status`.
+The script looks at the `monitored_servers` list in `main.py` and scrapes the server name and status for each server name in that list from `https://www.newworld.com/en-us/support/server-status`.  It also scrapes data from `https://www.newworld.com/en-us/news` and sends updates as new articles are written and posted to that site.
 Once this data has been retrieved, it will compare it against existing last known statuses, stored as JSON.  If no existing statuses found, it will write the 
 newest status for each server into JSON and send an initial status message to the Discord webhook URL configured.  If existing status are found, and the status has been updated, it will send a new status message for each changed 
 server to the Discord webhook URL.
