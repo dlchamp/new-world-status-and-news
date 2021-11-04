@@ -23,12 +23,11 @@ mention_role = '<@&1234567890112354'  # Mention role or use None (no quotes)
 
 status_url = 'https://www.newworld.com/en-us/support/server-status' # Should never need to change
 news_url = 'https://www.newworld.com/en-us/news'  # Should never need to change.
-cwd =  os.getcwd() # Absolute path to working dir - DO NOT EDIT
 
 '''
 Get old server status and compare with new status, update changes and send messages to discord webhook url
 '''
-old_status_dict = status_func.get_old_status(cwd)
+old_status_dict = status_func.get_old_status()
 new_status_dict = status_func.scrape_status_page(status_url,monitored_servers)
 
 if bool(old_status_dict):
@@ -61,7 +60,7 @@ if bool(old_status_dict):
         status_func.update_json_status(diff_dict,cwd)
 
 else:
-    status_func.update_json_status(new_status_dict,cwd)
+    status_func.update_json_status(new_status_dict)
     for server,status in new_status_dict.items():
         if status == '✅':
             message = 'The following server is online!'
@@ -81,26 +80,16 @@ else:
 Scrape articles, compare new articles with old articles, if articles updated, send new articles to discord webhook url
 '''
 new_articles_dict = news_func.scrape_news_articles(news_url)
-old_articles_dict = news_func.get_old_articles(cwd)
-send_articles_dict = {}
+old_articles_dict = news_func.get_old_articles()
 
 if bool(old_articles_dict):
     for article in new_articles_dict:
         if new_articles_dict[article]['title'] == old_articles_dict[article]['title']:
             pass
         else:
-            send_articles_dict[article] = {
-                            'title':new_articles_dict[article]['title'],
-                            'desc':new_articles_dict[article]['desc'],
-                            'url':new_articles_dict[article]['url'],
-                            'img':new_articles_dict[article]['img']
-                            }
-
-            print('New article found -- Sending to Discord...')
-    news_func.articles_webhook(news_webhook_url,send_articles_dict,mention_role)
-    news_func.update_articles(new_articles_dict,cwd)
+            news_func.articles_webhook(news_webhook_url,new_articles_dict,mention_role)
+            news_func.update_articles(new_articles_dict)
 else:
-    print('New article(s) found -- Updating articles.json...')
-    news_func.update_articles(new_articles_dict,cwd)
+    news_func.update_articles(new_articles_dict)
 
 

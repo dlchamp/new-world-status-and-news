@@ -38,13 +38,13 @@ class ServerStatus:
         return diff_dict
 
 
-    def get_old_status(cwd):
-        with open(f'{cwd}/db/status.json') as x:
+    def get_old_status():
+        with open('./db/status.json') as x:
             old_status = json.load(x)
         return old_status
 
-    def update_json_status(new_status,cwd):
-        with open(f'{cwd}/db/status.json','w+') as f:
+    def update_json_status(new_status):
+        with open('./db/status.json','w+') as f:
             json.dump(new_status, f, indent=2)
 
 
@@ -83,36 +83,32 @@ class GameNews:
 
 
     def scrape_news_articles(news_url):
+        new_articles_dict = {}
         r = requests.get(news_url)
         page = BeautifulSoup(r.content,'html.parser')
         articles_section = page.find('div',
             class_='ags-ContainerModule-container-slotModuleContainer js-blogContainer')
-        articles = articles_section.find_all('div',
+        article = articles_section.find('div',
             class_='ags-SlotModule ags-SlotModule--blog ags-SlotModule--threePerRow')
-
-        new_articles_dict = {}
-        article_num = 0
-        for article in articles:
-            article_num += 1
-            title = article.find('span',
-                class_='ags-SlotModule-contentContainer-heading ags-SlotModule-contentContainer-heading ags-SlotModule-contentContainer-heading--blog').text.strip()
-            desc = article.find('div',
-                class_='ags-SlotModule-contentContainer-text ags-SlotModule-contentContainer-text--blog ags-SlotModule-contentContainer-text').text.strip()
-            url = 'https://newworld.com/' + article.find('a')['href']
-            img = 'https:' + article.find('img', class_='ags-SlotModule-imageContainer-image')['src']
-            new_articles_dict[f'article_{article_num}'] = {
-                    'title':title,'desc': desc,'url':url,'img': img}
+        title = article.find('span',
+            class_='ags-SlotModule-contentContainer-heading ags-SlotModule-contentContainer-heading ags-SlotModule-contentContainer-heading--blog').text.strip()
+        desc = article.find('div',
+            class_='ags-SlotModule-contentContainer-text ags-SlotModule-contentContainer-text--blog ags-SlotModule-contentContainer-text').text.strip()
+        url = 'https://newworld.com/' + article.find('a')['href']
+        img = 'https:' + article.find('img', class_='ags-SlotModule-imageContainer-image')['src']
+        new_articles_dict['article'] = {
+                'title':title,'desc': desc,'url':url,'img': img}
 
         return new_articles_dict
 
 
-    def get_old_articles(cwd):
-        with open(f'{cwd}/db/articles.json') as x:
+    def get_old_articles():
+        with open('./db/articles.json') as x:
             old_articles = json.load(x)
         return old_articles
 
-    def update_articles(send_articles_dict,cwd):
-        with open(f'{cwd}/db/articles.json', 'w+') as f:
+    def update_articles(send_articles_dict):
+        with open('./db/articles.json', 'w+') as f:
             json.dump(send_articles_dict,f,indent=2, ensure_ascii=False)
 
 
@@ -125,9 +121,9 @@ class GameNews:
 
             webhook = DiscordWebhook(url=news_webhook_url, rate_limit_retry=True)
             if role is None:
-                embed = DiscordEmbed(title=f'Game Updates')
+                embed = DiscordEmbed(title='Game Updates')
             else:
-                embed = DiscordEmbed(title='Server Status',
+                embed = DiscordEmbed(title='Game Updates',
                     description=f'{role}')
             embed.add_embed_field(name=title, value=f'{desc} -- [[More info...]]({url})')
             embed.set_image(url=img)
