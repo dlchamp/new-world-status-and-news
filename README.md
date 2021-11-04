@@ -57,14 +57,19 @@ server to the Discord webhook URL.
 
 ## Version History
 
-* 0.3
+*1.3
+    * Fixed an issue where the script was sending every article when one article changed
+    * Instead of grabbing every single article, every time, script now just grabs the latest article
+    * Fixed spelling issues in the embed message and fixed an issue where a mispelled variable wsa causing errors, breaking the script
+
+* 1.2
     * Added new functions for scraping and posting game updates/patch notes
     * Added vairable for second webhook url if user wishes to send updates/patch notes to a different channel than server status messages
-* 0.2
+* 1.1
     * Added options for mentioning roles
     * Updated readme to include full instructions for setup of script, crontab, and Windows task scheduler
 
-* 0.1
+* 1.0
     * Initial Release
 
 
