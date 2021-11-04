@@ -36,7 +36,7 @@ server to the Discord webhook URL.
 * Add second URL if you wish to have updates/patch notes sent to a different channel, if not, leave `news_webhook_url` as is.
 * Input the server's you wish to monitor in the `monitored_servers` list
 * Input a role that you'd like to mention when new updates are sent to a channel - use `None` if you do not wish to setup a mention role.  (*ex: mention_role = '<@&78986543516879564'* or *mention_role = None*)
-* Setup to run on a schedule via crontab or Windows task schedular, or whatever other means you find the most comfortable. 
+* Setup to run on a schedule via crontab or Windows task scheduler, or whatever other means you find the most comfortable. 
 
 
 ## Version History
