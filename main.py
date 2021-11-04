@@ -70,7 +70,7 @@ else:
             message = 'The following server is offline!'
             status_func.webhook_embed(server_status_webhook_url,server,status, message,mention_role)
         elif status == '⚠️':
-            message = 'The following server is currently full! Loging qeueus should be expected.'
+            message = 'The following server is currently full! Login qeueus should be expected.'
             status_func.webhook_embed(server_status_webhook_url,server,status, message,mention_role)
         elif status == '🛠️':
             message = ' The following server is undergoing maintenance! A new message status will be sent once it\'s back online.'
