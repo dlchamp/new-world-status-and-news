@@ -95,11 +95,8 @@ if bool(old_articles_dict):
                             'url':new_articles_dict[article]['url'],
                             'img':new_articles_dict[article]['img']
                             }
-<<<<<<< Updated upstream
-            print('New article(s) found -- Sending to Discord...')
-=======
+
             print('New article found -- Sending to Discord...')
->>>>>>> Stashed changes
     news_func.articles_webhook(news_webhook_url,send_articles_dict,mention_role)
     news_func.update_articles(new_articles_dict,cwd)
 else:
