@@ -51,7 +51,7 @@ server to the Discord webhook URL.
     * Added vairable for second webhook url if user wishes to send updates/patch notes to a different channel than server status messages
 * 1.1
     * Added options for mentioning roles
-    * Updated readme to include full instructions for setup of script, crontab, and Windows task scheduler
+    * Updated readme - spellcheck and full instructions.
 
 * 1.0
     * Initial Release
