@@ -41,7 +41,7 @@ server to the Discord webhook URL.
 
 ## Version History
 
-*1.3
+* 1.3
     * Fixed an issue where the script was sending every article when one article changed
     * Instead of grabbing every single article, every time, script now just grabs the latest article
     * Fixed spelling issues in the embed message and fixed an issue where a mispelled variable wsa causing errors, breaking the script
