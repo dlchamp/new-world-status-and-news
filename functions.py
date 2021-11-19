@@ -11,8 +11,6 @@ class ServerStatus:
     def webhook_embed(webhook_url, server, status, message, role):
         if status == "✅":
             status_color = "00cf00"
-        elif status == "❌":
-            status_color = "ff0000"
         else:
             status = "ffaa00"
 

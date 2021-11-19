@@ -45,7 +45,8 @@ if bool(old_status_dict):
         old_status_dict, new_status_dict)
     for server, diff_status in diff_status_dict.items():
         if diff_status == '✅':
-            log.info(f'{server} status has been updated: ✅ -- Sending to Discord...')
+            log.info(
+                f'{server} status has been updated: ✅ -- Sending to Discord...')
             if old_status_dict[server] == '❌':
                 message = 'The following server is now online!'
                 status_func.webhook_embed(
@@ -55,26 +56,29 @@ if bool(old_status_dict):
                 status_func.webhook_embed(
                     server_status_webhook_url, server, diff_status, message, mention_role)
             elif old_status_dict[server] == '⚠️':
-                message = 'The following server is no longer full and should have reduce or no wait time to log in!'
+                message = 'The following server is no longer full and should have reduced or no wait time to log in!'
                 status_func.webhook_embed(
                     server_status_webhook_url, server, diff_status, message, mention_role)
 
         elif diff_status == '⚠️':
-            log.info(f'{server} status has been updated: ⚠️-- Sending to Discord...')
+            log.info(
+                f'{server} status has been updated: ⚠️-- Sending to Discord...')
             message = 'The following server is now full!  Login queues should be expected.'
             status_func.webhook_embed(
                 server_status_webhook_url, server, diff_status, message, mention_role)
         elif diff_status == '❌':
-            log.info(f'{server} status has been updated: ❌-- Sending to Discord...')
+            log.info(
+                f'{server} status has been updated: ❌-- Sending to Discord...')
             message = 'The following server is now offline!'
             status_func.webhook_embed(
                 server_status_webhook_url, server, diff_status, message, mention_role)
         elif diff_status == '🛠️':
-            log.info(f'{server} status has been updated: 🛠️-- Sending to Discord...')
+            log.info(
+                f'{server} status has been updated: 🛠️-- Sending to Discord...')
             message = 'The following server is undergoing maintenance. A new status message will be sent when it becomes available!'
             status_func.webhook_embed(
                 server_status_webhook_url, server, diff_status, message, mention_role)
-        status_func.update_json_status(diff_dict, cwd)
+        status_func.update_json_status(new_status_dict)
 
 else:
     '''
@@ -83,7 +87,6 @@ else:
     '''
     status_func.update_json_status(new_status_dict)
     log.info('Current Statuses stored for next scan.')
-
 
 
 '''
