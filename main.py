@@ -35,9 +35,8 @@ news_url = 'https://www.newworld.com/en-us/news'
 '''
 Get old server status and compare with new status, update changes and send messages to discord webhook url
 '''
-log.info('Retrieving old status from JSON')
+
 old_status_dict = status_func.get_old_status()
-log.info('Scraping new server status from status page')
 new_status_dict = status_func.scrape_status_page(status_url, monitored_servers)
 
 if bool(old_status_dict):
