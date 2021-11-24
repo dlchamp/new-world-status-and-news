@@ -85,7 +85,7 @@ else:
     status to the JSON for next status change.
     '''
     status_func.update_json_status(new_status_dict)
-    log.info('Current Statuses stored for next scan.')
+
 
 
 '''
