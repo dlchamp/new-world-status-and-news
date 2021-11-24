@@ -12,7 +12,7 @@ class ServerStatus:
         if status == "✅":
             status_color = "00cf00"
         else:
-            status = "ffaa00"
+            status_color = "ffaa00"
 
         webhook = DiscordWebhook(url=webhook_url, rate_limit_retry=True)
         if role is None:
