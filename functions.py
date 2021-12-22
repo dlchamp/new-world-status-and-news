@@ -87,7 +87,7 @@ class GameNews:
                              class_='ags-SlotModule-contentContainer-heading ags-SlotModule-contentContainer-heading ags-SlotModule-contentContainer-heading--blog').text.strip()
         desc = article.find('div',
                             class_='ags-SlotModule-contentContainer-text ags-SlotModule-contentContainer-text--blog ags-SlotModule-contentContainer-text').text.strip()
-        url = 'https://newworld.com/' + article.find('a')['href']
+        url = 'https://newworld.com' + article.find('a')['href']
         img = 'https:' + \
             article.find(
                 'img', class_='ags-SlotModule-imageContainer-image')['src']
